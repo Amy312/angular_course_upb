@@ -9,5 +9,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'first.angulat';
+  title:string  = 'first.angular Amy';
+  numero:number = 6;
 }
