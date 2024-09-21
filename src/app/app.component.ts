@@ -24,4 +24,13 @@ export class AppComponent {
   private subtract(n1: number, n2: number):number {
     return n1-n2
   }
+
+  public getEvenArray(){
+    const persons:number[] = [1,2,3,4,5,6,7,8,9,10]
+    for(let i=0; i<persons.length; i++){
+      if(persons[i]%2==0){
+        console.log('person =', persons[i])
+      }
+    }
+  }
 }
