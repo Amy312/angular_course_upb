@@ -8,3 +8,9 @@
     [email]="'marcopolo@mc.com'"
     (sendData)="receiveData($event)">
 </user-card>
+<p> Result: {{result}}</p>
+<calculator
+(sum)="onResult($event)"
+(mul)="onResult($event)"
+(reset)="onResult($event)"
+></calculator>

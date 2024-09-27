@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserCardComponent } from "./user-card/user-card.component";
+import { CalculatorComponent } from './calculator/calculator.component';
 
 interface IPerson {
   name: string,
@@ -10,12 +11,13 @@ interface IPerson {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
+  result: number = 0
   title:string  = 'first.angular Amy';
   numero:number = 6;
   animals: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -78,5 +80,10 @@ export class AppComponent {
     console.log("Data recibida: ", data)
   }
     
+  public onResult(data: any){
+    this.result = data ?? 0
+  }
+
+
   
 }

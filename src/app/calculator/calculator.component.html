@@ -1,0 +1,17 @@
+<div class="base">
+  <div class="calculator">
+    <p>Calculator</p>
+    <input type="number" [(ngModel)]="box1Value" />
+    <input type="number" [(ngModel)]="box2Value" />
+    <div class="buttons-container">
+      <button class="sum" (click)="onSum()">Sum</button>
+      <button class="mul" (click)="onMul()">Multiply</button>
+      <button class="reset" (click)="onReset()">Reset</button>
+    </div>
+  </div>
+
+  <div class="history">
+    <p>Historial</p>
+    <div *ngFor="let h of history">{{ h }}</div>
+  </div>
+</div>
