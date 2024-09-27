@@ -73,6 +73,10 @@ export class AppComponent {
       }
     }
   }
+
+  public receiveData(data:any){
+    console.log("Data recibida: ", data)
+  }
     
   
 }
