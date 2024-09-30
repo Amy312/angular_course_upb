@@ -1,0 +1,27 @@
+.user_page{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    width: 100vh;
+    height: max-content;
+    justify-content: center;
+    
+    .list{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+    
+    }
+}
+
+button{
+    font-size: large;
+    font-family: 'Lucida Sans';
+    margin: 8px;
+    padding: 10px 20px;
+    background-color: antiquewhite;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    width: 80%;
+    
+}

@@ -1,6 +1,36 @@
+
+<div class="user_page"> 
+    <div class="list">
+        @for(person of list_people; track person){
+            <person-card 
+                [name]="person.name"
+                [gender]="person.gender"
+                [age]="person.age" />
+    
+        }
+    </div>
+    <div class="list">
+        <div style="align-items: center; height: 100%;">
+            <button (click)="countGender('female')"> Total female people: {{total_female}}</button>
+            <button (click)="countGender('male')"> Total male people: {{total_male}}</button>
+        </div>
+        <div style="align-items: center; height: 100%;">
+            <button (click)="countDiscount()"> Total people with discount: {{total_discount}}</button>
+
+        </div>
+        <div style="align-items: center; height: 20%;">
+            <button (click)="deleteDiscount()"> Delete people with discount</button>
+        </div>
+
+
+    </div>
+</div>
+
+<!--
 <h1>hello {{ numero + 2 }}</h1>
 <p>Add {{ sum(3, 5) }}</p>
-<!-- <p> Subtract {{ subtract(9,5)}}-->
+<p> Subtract {{ subtract(9,5)}}
+
 <p>Get Evens Numers {{ getEvenArray() }}</p>
 
 <user-card 
@@ -40,3 +70,4 @@
     @case (1) { <p>new syntax, var is 1</p>}
     @default { <p>new syntax, default</p> }
 }
+-->

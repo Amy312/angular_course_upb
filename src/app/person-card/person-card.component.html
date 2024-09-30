@@ -1,0 +1,13 @@
+<div class="pcard">
+  @if(haveDiscount()){
+  <div class="discount">
+    <p class="pdiscount">Discount</p>
+  </div>
+  }
+  @else {
+    <div style="height: 42px"></div>
+  }
+  <p>Name: {{ name }}</p>
+  <p>Gender: {{ gender }}</p>
+  <p>Age: {{ age }}</p>
+</div>

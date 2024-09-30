@@ -1,0 +1,28 @@
+.pcard{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+    padding: 0px 0px 12px 16px;
+    font-family: 'Lucida Sans';
+    border: 3px solid rgb(237, 237, 177);
+    border-radius: 10px;
+
+    .discount{
+        display: flex;
+        justify-content: flex-end;        
+    }
+
+    .pdiscount{
+        padding: 3px 8px;
+        background-color: antiquewhite;
+        border: 2px solid rgb(237, 237, 177);
+        border-radius: 8px;
+    }
+}
+
+
+p{
+    width: fit-content;
+    height: fit-content; 
+    margin: 2px; 
+  }

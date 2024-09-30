@@ -3,22 +3,77 @@ import { RouterOutlet } from '@angular/router';
 import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { CommonModule } from '@angular/common';
+import { PersonCardComponent } from './person-card/person-card.component';
 
-interface IPerson {
+/*interface IPerson {
   name: string,
   lastName: string,
   age?: number
+}*/
+
+interface IPerson{
+  gender: string,
+  name: string,
+  age: number
 }
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
-  result: number = 0
+  total_female = 0;
+  total_male = 0;
+  total_discount = 0;
+  list_people: IPerson[] = [
+    {
+      gender: "female",
+      name: "Camila Cortez",
+      age: 23
+    },
+    {
+      gender: "male",
+      name: "Juan Cortez",
+      age: 13
+    },
+    {
+      gender: "male",
+      name: "Marco Polo",
+      age: 31
+    },
+    {
+      gender: "female",
+      name: "Carolina Marquez",
+      age: 17
+    },
+    {
+      gender: "female",
+      name: "Maria Rosas",
+      age: 19
+    },
+  ]
+
+  public countGender(gender:string){
+    const total = this.list_people.filter((person)=>(person.gender==gender)).length
+    if(gender=='female'){
+      this.total_female = total;
+    } else{
+      this.total_male = total;
+
+    }
+  }
+
+  public countDiscount(){
+    this.total_discount = this.list_people.filter((person) =>(person.age>18)).length
+  }
+
+  public deleteDiscount(){
+    this.list_people = this.list_people.filter((person) =>(person.age<18))
+  }
+  /*result: number = 0
   title:string  = 'first.angular Amy';
   numero:number = 6;
   animals: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
@@ -83,7 +138,7 @@ export class AppComponent {
     
   public onResult(data: any){
     this.result = data ?? 0
-  }
+  }*/
 
 
   
