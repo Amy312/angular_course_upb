@@ -26,10 +26,19 @@
     </div>
 </div>
 
-<!--
+<button (click)="userCardCreated = !userCardCreated">create and destroy user card</button>
+@if(userCardCreated) {
+  <user-card name="juan" [email]="'juan@gmail.com'" (sendData)="receiveData($event)">
+    <p>My HTML from father</p>
+    <button>My button from father</button>
+  </user-card>
+} @else {
+  <p>user card destroyed</p>
+}
+
 <h1>hello {{ numero + 2 }}</h1>
 <p>Add {{ sum(3, 5) }}</p>
-<p> Subtract {{ subtract(9,5)}}
+<!-- <p> Subtract {{ subtract(9,5)}} -->
 
 <p>Get Evens Numers {{ getEvenArray() }}</p>
 
@@ -70,4 +79,3 @@
     @case (1) { <p>new syntax, var is 1</p>}
     @default { <p>new syntax, default</p> }
 }
--->

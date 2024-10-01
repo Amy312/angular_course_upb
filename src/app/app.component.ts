@@ -73,16 +73,18 @@ export class AppComponent {
   public deleteDiscount(){
     this.list_people = this.list_people.filter((person) =>(person.age<18))
   }
-  /*result: number = 0
+  result: number = 0
   title:string  = 'first.angular Amy';
   numero:number = 6;
   animals: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
-  person: IPerson = {
+  userCardCreated: boolean = true
+
+  /*person: IPerson = {
     name: 'Juan',
     lastName: 'Perez',
     age: 12
-  } 
+  } */
 
   students: number[]= [1,2,3,4,5,6]
   parents: number[]= [7,8,9,10]
@@ -92,8 +94,9 @@ export class AppComponent {
   var3 = 'hola'
 
   constructor(){
-    const {name, lastName} = this.person
-    console.log('destructuration: ',name, lastName)
+    
+    /*const {name, lastName} = this.person
+    console.log('destructuration: ',name, lastName)*/
 
     let both = [...this.students, ...this.parents]
     console.log('spreed operator: ', both)
@@ -138,7 +141,7 @@ export class AppComponent {
     
   public onResult(data: any){
     this.result = data ?? 0
-  }*/
+  }
 
 
   
