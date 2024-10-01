@@ -78,6 +78,9 @@ export class AppComponent {
   numero:number = 6;
   animals: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
 
+  users = [{ name: 'abc', 'email': 'abc@gmail.com' }, { name: 'dfg', 'email': 'dfg@gmail.com' }]
+  selectedUser:any = this.users[0];
+
   userCardCreated: boolean = true
 
   /*person: IPerson = {
