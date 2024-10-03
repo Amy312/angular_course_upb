@@ -31,11 +31,20 @@ export class UserCardComponent
 
   @Output() sendData = new EventEmitter();
 
-  @ViewChild("buttonTest") buttonTest!: ElementRef;
+  @ViewChild('buttonTest', { static: false }) buttonTest!: ElementRef
+  @ViewChild('buttonShow', { static: true }) buttonShow!: ElementRef
+  
   password: string = "";
-  showButton: boolean = false;
+  showButton: boolean = true;
+
+  constructor(){
+    console.log("user card constructor")
+  }
+
   ngOnInit(): void {
     console.log("user card on init");
+    this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
+
     // this.password = this.name + ' ' +  this.email + ' PASSWORD'
   }
 
@@ -68,6 +77,9 @@ export class UserCardComponent
   ngAfterViewInit(): void {
     console.log('NG AFTER VIEW INIT')
     console.log('BUTTON TEST', this.buttonTest)   
-    this.buttonTest.nativeElement.textContent = 'aaaaaaaaaaaaaaaaaaaaaa'
-  }
+
+    if(this.buttonTest){
+      this.buttonTest.nativeElement.textContent = 'button Test in ngAfterViewInit'
+    } 
+   }
 }
