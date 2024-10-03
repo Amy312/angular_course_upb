@@ -4,6 +4,7 @@ import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { CommonModule } from '@angular/common';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { CounterComponent } from './counter/counter.component';
 
 /*interface IPerson {
   name: string,
@@ -19,7 +20,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -40,22 +40,22 @@ export class UserCardComponent
   showButton: boolean = true;
 
   constructor(){
-    console.log("user card constructor")
+    //console.log("user card constructor")
   }
 
   ngOnInit(): void {
-    console.log("user card on init");
+    //console.log("user card on init");
     this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
 
     // this.password = this.name + ' ' +  this.email + ' PASSWORD'
   }
 
   ngOnDestroy(): void {
-    console.log("user card on destroy");
+    //console.log("user card on destroy");
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("CHANGES:", changes);
+    //console.log("CHANGES:", changes);
     this.password =
       changes["name"].currentValue +
       " " +
@@ -64,21 +64,21 @@ export class UserCardComponent
   }
 
   public onSendData() {
-    console.log("onSendData in child");
+    //console.log("onSendData in child");
     this.sendData.emit("Hola desde el hijo");
   }
 
   ngDoCheck(): void {
-    console.log("DO CHECK user card");
+    //console.log("DO CHECK user card");
   }
   ngAfterContentInit(): void {
-    console.log("NG AFTER CONTENT INIT");
+    //console.log("NG AFTER CONTENT INIT");
   }
 
 
   ngAfterViewInit(): void {
-    console.log('NG AFTER VIEW INIT')
-    console.log('BUTTON TEST', this.buttonTest)   
+    //console.log('NG AFTER VIEW INIT')
+    //console.log('BUTTON TEST', this.buttonTest)   
 
     if(this.buttonTest){
       this.buttonTest.nativeElement.textContent = 'button Test in ngAfterViewInit'
@@ -87,11 +87,11 @@ export class UserCardComponent
 
 
    ngAfterContentChecked(): void {
-    console.log('AFTER CONTENT CHECKED')
+    //console.log('AFTER CONTENT CHECKED')
   }
 
   ngAfterViewChecked(): void {
-    console.log('NG AFTER VIEW CHECKED')
+    //console.log('NG AFTER VIEW CHECKED')
   }
 
 }
