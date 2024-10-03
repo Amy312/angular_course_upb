@@ -13,6 +13,8 @@ import {
   Output,
   SimpleChanges,
   ViewChild,
+  AfterContentChecked,
+  AfterViewChecked,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 
@@ -24,7 +26,7 @@ import { FormsModule } from "@angular/forms";
   styleUrl: "./user-card.component.css",
 })
 export class UserCardComponent
-  implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterViewInit
+  implements OnInit, OnDestroy, OnChanges, DoCheck, AfterContentInit, AfterViewInit, AfterContentChecked, AfterViewChecked
 {
   @Input() name: string = "";
   @Input() email: string = "";
@@ -82,4 +84,14 @@ export class UserCardComponent
       this.buttonTest.nativeElement.textContent = 'button Test in ngAfterViewInit'
     } 
    }
+
+
+   ngAfterContentChecked(): void {
+    console.log('AFTER CONTENT CHECKED')
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('NG AFTER VIEW CHECKED')
+  }
+
 }
