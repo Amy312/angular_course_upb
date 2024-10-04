@@ -36,7 +36,7 @@ export class UserCardComponent
   @ViewChild('buttonTest', { static: false }) buttonTest!: ElementRef
   @ViewChild('buttonShow', { static: true }) buttonShow!: ElementRef
   
-  password: string = "";
+  password: string = "password";
   showButton: boolean = true;
 
   constructor(){
