@@ -2,7 +2,10 @@
   'user-card': password === '123',
   'user-card-black': password === 'hola' 
 }">
+  <p [ngStyle]="{
+    'background-color': password === 'red' ? 'red': 'yellow',
 
+  }">USER CARD COMPONENT</p>
   <p>INPUT name: {{ name }}</p>
   <p>INPUT email:{{ email }}</p>
 
