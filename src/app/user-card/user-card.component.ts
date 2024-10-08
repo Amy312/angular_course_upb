@@ -17,11 +17,12 @@ import {
   AfterViewChecked,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { SharedModuleModule } from "../shared-module/shared-module.module";
 
 @Component({
   selector: "user-card",
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SharedModuleModule],
   templateUrl: "./user-card.component.html",
   styleUrl: "./user-card.component.css",
 })
