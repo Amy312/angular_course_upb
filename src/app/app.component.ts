@@ -5,6 +5,7 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { CommonModule } from '@angular/common';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { CounterComponent } from './counter/counter.component';
+import { filter, from, map, tap } from 'rxjs';
 
 /*interface IPerson {
   name: string,
@@ -26,6 +27,7 @@ interface IPerson{
 })
 
 export class AppComponent {
+  youtube = from([1,2,3,4,5,6])
   total_female = 0;
   total_male = 0;
   total_discount = 0;
@@ -56,6 +58,27 @@ export class AppComponent {
       age: 19
     },
   ]
+
+  addVideo() {
+    this.youtube
+      .pipe(
+        map((res: number) => {
+          //console.log("MAP OPERATOER RXJS: ", res);
+          if (res % 2 === 0) {
+            return res;
+          } else {
+            return null
+          }
+        }),
+        tap((res)  => {console.log('VALUE: ', res)}),
+        filter((res: number | null) => res !== null),
+      )
+      .subscribe((res) => {
+        console.log("SUSCRIBER 2: ", res);
+      });
+  }
+
+
 
   public countGender(gender:string){
     const total = this.list_people.filter((person)=>(person.gender==gender)).length
@@ -99,6 +122,9 @@ export class AppComponent {
 
   constructor(){
     
+    this.youtube.subscribe((res) => {
+      console.log("SUSCRIBER 1: ", res);
+    });
     /*const {name, lastName} = this.person
     console.log('destructuration: ',name, lastName)*/
 
