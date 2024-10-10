@@ -1,0 +1,48 @@
+<div>
+    @switch (type_card) {
+        @case ("personal") {
+            <p>
+                Name: {{person.name}}
+            </p>
+            <p>
+                LastName: {{person.lastName}}
+            </p>
+            <p>
+                Type: {{person.type}}
+            </p>
+            @if (person.type==="student") {
+                <p>
+                    Score: {{getScore()}} 
+                </p>
+            }
+            @else {
+                <p>
+                    Subject: {{ person.subject}}
+                </p>
+            }
+        }
+        @case ("geographic") {
+            <p>
+                Address: {{person.address}}
+            </p>
+            <p>
+                Country: {{person.country}}
+            </p>
+            <p>
+                Province: {{person.province}}
+            </p>
+            
+        }
+
+        @case ("messages") {
+            <search></search>
+            @for (message of person.messages; track $index) {
+                <item
+                 [information]="getInformation(message)"
+                 [type_item]="'type-message'"
+                 ></item>
+            }
+        }
+
+    }
+</div>

@@ -1,0 +1,8 @@
+<div class="list">
+    @for (person of people; track $index) {
+        <item [information]="getInformation(person)"
+            [type_item]="'type-list'"
+            (delete)="deletePerson(getInformation(person).name!)"
+            (show)="showPerson(person)"></item>
+    }
+</div>

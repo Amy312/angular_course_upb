@@ -1,0 +1,17 @@
+<div
+  class="item"
+  [ngStyle]="getBackgroundStyle(type_item, information.type_p!)"
+>
+  @switch (type_item) { @case ("type-list") {
+    <p>{{ information.name }} - {{ information.type_p }}</p>
+    <div>
+        <button (click)="showItem()">show</button>
+        <button (click)="deleteItem()">delete</button>
+    </div>
+
+  } @case ("type-message") {
+  <p>{{ information.message }}</p>
+  } @default {
+  <p>I don't know {{ type_item }}</p>
+  } }
+</div>
