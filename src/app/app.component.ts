@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { CounterComponent } from './counter/counter.component';
 import { filter, from, map, tap } from 'rxjs';
+import { AppColorsDirective } from "./app-colors.directive";
 
 /*interface IPerson {
   name: string,
@@ -21,7 +22,8 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent],
+  imports: [AppColorsDirective,
+    RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -78,7 +80,9 @@ export class AppComponent {
       });
   }
 
-
+  public getColor(value:string): void {
+    console.log("value: ", value);
+  }
 
   public countGender(gender:string){
     const total = this.list_people.filter((person)=>(person.gender==gender)).length

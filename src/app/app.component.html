@@ -4,7 +4,14 @@
     (sendData)="receiveData($event)">
 </user-card>
 <button (click)="addVideo()">add new video to youtube</button>
-
+<div  
+[ngColors]="'green'" 
+[defaultColor]="'pink'" 
+(colorClick)="getColor($event)" 
+(colorDoubleCick)="getColor($event)"     
+             style="border: 1px solid orange;">
+  MY CUSTOM ATTRIBUTE DIRECTIVE
+</div>
 <!--<div class="user_page"> 
     <div class="list">
         @for(person of list_people; track person){
