@@ -1,4 +1,15 @@
 .page{
     display: flex;
     flex-direction: row;
+    width: 100%;
+}
+.space {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.space2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }

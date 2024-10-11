@@ -1,15 +1,24 @@
 <div class="page">
-  <list [people]="list_people"
-  ></list>
-  <div>
+  <div class="space">
+    <search
+    (search)="onSearch($event)"></search>
+    <list [people]="list_people"
+    (showCard)="sendCard($event)"
+    ></list>
+  </div>
+  
+  <div class="space2">
     <div class="buttons">
-      <button (click)="type_c='personal'" >Personal</button>
-      <button (click)="type_c='geographic'">Geographic</button>
-      <button (click)="type_c='messages'">Messages</button>
+      <button (click)="type_c='personal'" 
+      [ngStyle]="{'background-color': 'beige'}">Personal</button>
+      <button (click)="type_c='geographic'"
+      [ngStyle]="{'background-color': 'lightblue'}">Geographic</button>
+      <button (click)="type_c='messages'"
+      [ngStyle]="{'background-color': 'lightgray'}">Messages</button>
     </div>
     <card
     [type_card]="getType()"
-    [person]="list_people[0]"
+    [person]="person"
     ></card>
 
   </div>
