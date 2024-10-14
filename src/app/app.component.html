@@ -1,99 +1,15 @@
-<user-card 
-    name="MArco polo" 
-    [email]="'marcopolo@mc.com'"
-    (sendData)="receiveData($event)">
-</user-card>
-<button (click)="addVideo()">add new video to youtube</button>
-<div  
-[ngColors]="'green'" 
-[defaultColor]="'pink'" 
-(colorClick)="getColor($event)" 
-(colorDoubleCick)="getColor($event)"     
-             style="border: 1px solid orange;">
-  MY CUSTOM ATTRIBUTE DIRECTIVE
-</div>
-<!--<div class="user_page"> 
-    <div class="list">
-        @for(person of list_people; track person){
-            <person-card 
-                [name]="person.name"
-                [gender]="person.gender"
-                [age]="person.age" />
-    
-        }
-    </div>
-    <div class="list">
-        <div style="align-items: center; height: 100%;">
-            <button (click)="countGender('female')"> Total female people: {{total_female}}</button>
-            <button (click)="countGender('male')"> Total male people: {{total_male}}</button>
-        </div>
-        <div style="align-items: center; height: 100%;">
-            <button (click)="countDiscount()"> Total people with discount: {{total_discount}}</button>
+<p>PIPES</p>
 
-        </div>
-        <div style="align-items: center; height: 20%;">
-            <button (click)="deleteDiscount()"> Delete people with discount</button>
-        </div>
+<P> {{ users | json }} </P>
+<p> {{ 'juan' | uppercase }} </p>
+<p> {{ 'JUAN' | lowercase }} </p>
+<p> {{ 'hola mundo' | titlecase }}</p>
+<p> {{ 'Tue Oct 27 15:35:08 CDT 2009' | date: 'dd/MM/YYYY'  }} </p>
 
+<p> MY FISRT PIPE PURE </p>
+<p>{{ students | pure }}</p>
+<p> MY FIRST PIPE IMPURE</p>
+<p>{{ students | impure }}</p>
 
-    </div>
-</div>
-
-<button (click)="userCardCreated = !userCardCreated">create and destroy user card</button>
-
-<button (click)="selectedUser = users[0]">change to user 0</button>
-<button (click)="selectedUser = users[1]">change to user 1</button>
-@if(userCardCreated) {
-    <user-card [name]="selectedUser.name" [email]="selectedUser.email" (sendData)="receiveData($event)">
-        <p>My HTML from father</p>
-    <button>My button from father</button>
-  </user-card>
-} @else {
-  <p>user card destroyed</p>
-}
-
-<h1>hello {{ numero + 2 }}</h1>
-<p>Add {{ sum(3, 5) }}</p>
-<!-- <p> Subtract {{ subtract(9,5)}} ->
-
-<p>Get Evens Numers {{ getEvenArray() }}</p>
-
-
-<p> Result: {{result}}</p>
-<calculator
-(sum)="onResult($event)"
-(mul)="onResult($event)"
-(reset)="onResult($event)"
-></calculator>
-
-<p *ngIf="1=== 1"> variables are equals</p>
-
-@if(1 === 1){
-    <p> new Sintax, variables are equals</p>
-}
-
-<p *ngFor="let item of ['a', 'b', 'c', 'd']; let i = index">
-    old for, value {{item}}, index {{i}}
-</p>
-
-@for(item of ['a', 'b', 'c', 'd']; track item){
-    <p>New Syntax Student: {{item}}</p>
-}
-
-<div [ngSwitch]="var1">
-    <p *ngSwitchCase="0"> var is 0</p>
-    <p *ngSwitchCase="1"> var is 1</p>
-    <p *ngSwitchDefault> default value</p>
-</div>
-
-@switch (var1) {
-    @case (0) { <p>new syntax, var is 0</p>}
-    @case (1) { <p>new syntax, var is 1</p>}
-    @default { <p>new syntax, default</p> }
-}
-
-
-<counter></counter>
-<button (click)="var1 = var1 + 1"> Increment Var1 </button>
-<p>{{ var1 }}</p>
--->
+<button (click)="students.push(12)">add neew number</button>
+<button (click)="addNumber()">add neew number in ts</button>

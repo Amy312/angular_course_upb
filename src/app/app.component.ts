@@ -7,6 +7,9 @@ import { PersonCardComponent } from './person-card/person-card.component';
 import { CounterComponent } from './counter/counter.component';
 import { filter, from, map, tap } from 'rxjs';
 import { AppColorsDirective } from "./app-colors.directive";
+import { CreateHtmlDirective } from './create-html.directive';
+import { PurePipe } from './pure.pipe';
+import { ImpurePipe } from './impure.pipe';
 
 /*interface IPerson {
   name: string,
@@ -23,12 +26,16 @@ interface IPerson{
   selector: 'app-root',
   standalone: true,
   imports: [AppColorsDirective,
-    RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent],
+    RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent,
+    CreateHtmlDirective,
+    PurePipe,
+    ImpurePipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 
 export class AppComponent {
+  students: number[] = [1, 2, 3, 4, 5, 6,7,8,9];
   youtube = from([1,2,3,4,5,6])
   total_female = 0;
   total_male = 0;
@@ -117,7 +124,6 @@ export class AppComponent {
     age: 12
   } */
 
-  students: number[]= [1,2,3,4,5,6]
   parents: number[]= [7,8,9,10]
 
   var1 = 0
@@ -177,6 +183,14 @@ export class AppComponent {
     this.result = data ?? 0
   }
 
-
+  public sumPure(a:number, b:number): number {
+    return a + b;
+  }
+  public sumImpure(a:number, b:number): number {
+    return a + b + Math.random();
+  }
+  public addNumber() {
+    this.students = [...this.students, 12]
+  }
   
 }
