@@ -9,6 +9,7 @@ import { filter, from, map, tap } from 'rxjs';
 import { AppColorsDirective } from "./app-colors.directive";
 import { CreateHtmlDirective } from './create-html.directive';
 import { PurePipe } from './pure.pipe';
+import { RouterLink } from "@angular/router";
 import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
@@ -30,7 +31,7 @@ interface IPerson{
     RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent,
     CreateHtmlDirective,
     PurePipe,
-    ImpurePipe, MatCardModule, MatButtonModule],
+    ImpurePipe, MatCardModule, MatButtonModule, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
