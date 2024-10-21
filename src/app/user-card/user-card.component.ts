@@ -18,6 +18,8 @@ import {
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { SharedModuleModule } from "../shared-module/shared-module.module";
+import { ActivatedRoute } from "@angular/router";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "user-card",
@@ -40,10 +42,17 @@ export class UserCardComponent
   password: string = "password";
   showButton: boolean = true;
 
-  constructor(){
+  subscription: Subscription = new Subscription();
+  constructor(private activatedRoute: ActivatedRoute) {
     //console.log("user card constructor")
+    this.subscription.add(this.activatedRoute.params.subscribe((params) => {
+      console.log("PARAMS: ", params);
+    }))
+  
+    console.log('Snapshot: ', this.activatedRoute.snapshot.params )   
   }
 
+  
   ngOnInit(): void {
     //console.log("user card on init");
     this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
@@ -53,6 +62,7 @@ export class UserCardComponent
 
   ngOnDestroy(): void {
     //console.log("user card on destroy");
+    this.subscription.unsubscribe()
   }
 
   ngOnChanges(changes: SimpleChanges): void {

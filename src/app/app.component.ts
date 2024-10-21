@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from './calculator/calculator.component';
 import { CommonModule } from '@angular/common';
@@ -9,26 +9,27 @@ import { filter, from, map, tap } from 'rxjs';
 import { AppColorsDirective } from "./app-colors.directive";
 import { CreateHtmlDirective } from './create-html.directive';
 import { PurePipe } from './pure.pipe';
-import { RouterLink } from "@angular/router";
 import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
-/*interface IPerson {
+interface IPerson2 {
   name: string,
   lastName: string,
   age?: number
-}*/
+}
 
 interface IPerson{
-  gender: string,
-  name: string,
-  age: number
+  gender?: string,
+  lastName?: string,
+  name?: string,
+  age?: number,
+  
 }
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [AppColorsDirective,
-    RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent,
+  RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonCardComponent, CounterComponent,
     CreateHtmlDirective,
     PurePipe,
     ImpurePipe, MatCardModule, MatButtonModule, RouterLink],
@@ -104,11 +105,11 @@ export class AppComponent {
   }
 
   public countDiscount(){
-    this.total_discount = this.list_people.filter((person) =>(person.age>18)).length
+    this.total_discount = this.list_people.filter((person) =>(person.age!>18)).length
   }
 
   public deleteDiscount(){
-    this.list_people = this.list_people.filter((person) =>(person.age<18))
+    this.list_people = this.list_people.filter((person) =>(person.age!<18))
   }
   result: number = 0
   title:string  = 'first.angular Amy';
@@ -120,11 +121,11 @@ export class AppComponent {
 
   userCardCreated: boolean = true
 
-  /*person: IPerson = {
+  person: IPerson = {
     name: 'Juan',
     lastName: 'Perez',
     age: 12
-  } */
+  } 
 
   parents: number[]= [7,8,9,10]
 
@@ -132,8 +133,10 @@ export class AppComponent {
   var2 = null
   var3 = 'hola'
 
-  constructor(){
-    
+  constructor(private router: Router){
+    const { name, age } = this.person;
+
+
     this.youtube.subscribe((res) => {
       console.log("SUSCRIBER 1: ", res);
     });
@@ -195,4 +198,12 @@ export class AppComponent {
     this.students = [...this.students, 12]
   }
   
+
+  public goToStudentModule() {
+    this.router.navigate(['student'])
+  }
+  public goToCard() {
+    this.router.navigate(['card', 1])
+  }
+
 }
