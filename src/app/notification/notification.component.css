@@ -1,0 +1,43 @@
+.notifications-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .tab.active {
+    background-color: #ddd;
+  }
+  
+  .notification {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .notification.youtube {
+    background-color: #ffd6d6;
+  }
+  
+  .notification.tiktok {
+    background-color: #d6caff;
+  }
+  
+  .notification.whatsapp {
+    background-color: #ccffcc;
+  }
+  

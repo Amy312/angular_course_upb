@@ -1,0 +1,63 @@
+.social-actions-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .action-button {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .social-card {
+    width: 120px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    position: relative;
+    text-transform: capitalize;
+  }
+  
+  .youtube {
+    background-color: #ffd6d6;
+  }
+  
+  .tiktok {
+    background-color: #d6caff;
+    position: relative;
+  }
+  
+  .instagram {
+    background-color: #ffe6cc;
+  }
+  
+  .facebook {
+    background-color: #cce5ff;
+  }
+  
+  .whatsapp {
+    background-color: #ccffcc;
+    position: relative;
+  }
+  
+  .premium-star {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: gold;
+    font-size: 16px;
+  }
+  

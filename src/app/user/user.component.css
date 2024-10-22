@@ -1,0 +1,100 @@
+.user-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .tabs {
+    display: flex;
+    margin-bottom: 20px;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .tab.active {
+    background-color: #ddd;
+  }
+  
+  .user-info p {
+    margin: 5px 0;
+  }
+  
+  .subscription-button, .premium {
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .subscription-button {
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .premium {
+    background-color: green;
+    color: white;
+  }
+  
+  .social-networks, .subscriptions {
+    margin-top: 20px;
+  }
+  
+  .network, .subscription {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .network.facebook {
+    background-color: #ffe6cc;
+  }
+  
+  .network.tiktok {
+    background-color: #ccffcc;
+  }
+  
+  .subscription.youtube {
+    background-color: #ffd6d6;
+  }
+  
+  .subscription.facebook {
+    background-color: #cce5ff;
+  }
+  
+  .subscription.tiktok {
+    background-color: #d6caff;
+  }
+  
+  .add-button, .remove-button {
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 18px;
+    font-size: 14px;
+  }
+  
+  .close-account-button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
