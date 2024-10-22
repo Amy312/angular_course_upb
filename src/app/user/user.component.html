@@ -1,50 +1,71 @@
 <div class="user-container">
   <div class="tabs">
-    <button class="tab active">User</button>
-    <button class="tab">Notifications (4)</button>
-  </div>
-  
-  <div class="user-info">
-    <p><strong>Name:</strong> {{user!.name}}</p>
-    <p><strong>Age:</strong> {{user!.age}}</p>
-    <p><strong>status:</strong> {{user!.status}}</p>
-    <p><strong>Subscription type:</strong></p>
-
     <button 
-    [ngClass]="user?.subscriptionType === 'free' ? 'subscription-button premium' : 'subscription-button'">
-    Free
-  </button>
+      class="tab" 
+      [ngClass]="activeTab === 'user' ? 'active' : ''" 
+      (click)="setActiveTab('user')">
+      User
+    </button>
+    <button 
+      class="tab" 
+      [ngClass]="activeTab === 'notifications' ? 'active' : ''" 
+      (click)="setActiveTab('notifications')">
+      Notifications ({{ user!.notifications.length }})
+    </button>
+  </div>
+
+  <!-- Sección de información del usuario -->
+   <div *ngIf="activeTab === 'user'">
+
+    <div  class="user-info">
+      <p><strong>Name:</strong> {{user!.name}}</p>
+      <p><strong>Age:</strong> {{user!.age}}</p>
+      <p><strong>Status:</strong> {{user!.status}}</p>
+      <p><strong>Subscription type:</strong></p>
   
-  <button 
-    [ngClass]="user?.subscriptionType === 'premium' ? 'subscription-button premium' : 'subscription-button'">
-    Premium
-  </button>
+      <button 
+        [ngClass]="user?.subscriptionType === 'free' ? 'subscription-button premium' : 'subscription-button'">
+        Free
+      </button>
+  
+      <button 
+        [ngClass]="user?.subscriptionType === 'premium' ? 'subscription-button premium' : 'subscription-button'">
+        Premium
+      </button>
+  
+      <p><strong>Amount available:</strong> {{user!.amountAvailable}}$</p>
+    </div>
 
-    <p><strong>Amount available:</strong> 30$</p>
-  </div>
+    <div class="social-networks">
+      <h3>Social Networks</h3>
+      <div class="network facebook">
+        facebook <button class="add-button">+</button>
+      </div>
+      <div class="network tiktok">
+        tiktok <button class="add-button">+</button>
+      </div>
+    </div>
+  
+    <div class="subscriptions">
+      <h3>Subscriptions:</h3>
+      <div class="subscription youtube">
+        youtube <button class="remove-button">x</button>
+      </div>
+      <div class="subscription facebook">
+        facebook <button class="remove-button">x</button>
+      </div>
+      <div class="subscription tiktok">
+        tiktok <button class="remove-button">x</button>
+      </div>
+    </div>
+  
+    <button class="close-account-button">Close account</button>
+   </div>
+  
 
-  <div class="social-networks">
-    <h3>Social Networks</h3>
-    <div class="network facebook">
-      facebook <button class="add-button">+</button>
-    </div>
-    <div class="network tiktok">
-      tiktok <button class="add-button">+</button>
-    </div>
-  </div>
+  <!-- Componente de notificaciones -->
+  <app-notification *ngIf="activeTab === 'notifications'" [notifications]="user!.notifications"></app-notification>
 
-  <div class="subscriptions">
-    <h3>Subscriptions:</h3>
-    <div class="subscription youtube">
-      youtube <button class="remove-button">x</button>
-    </div>
-    <div class="subscription facebook">
-      facebook <button class="remove-button">x</button>
-    </div>
-    <div class="subscription tiktok">
-      tiktok <button class="remove-button">x</button>
-    </div>
-  </div>
 
-  <button class="close-account-button">Close account</button>
+  
 </div>
