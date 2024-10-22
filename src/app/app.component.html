@@ -1,10 +1,8 @@
 <div class="container">
-  <!-- Lista de Redes Sociales -->
   <h2>Social Networks</h2>
   <h2>Social Networks Overview</h2>
-  <app-social [socialNetworks]="socialNetworks"></app-social>
+  <app-social [socialNetworks]="socialNetworks" (addNotification)="emitNotification($event)"></app-social>
 
-  <!-- Lista de Usuarios -->
   <h2>Users</h2>
   <div class="users">
     <div *ngFor="let user of users">

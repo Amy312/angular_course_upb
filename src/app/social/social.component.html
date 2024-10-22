@@ -1,6 +1,6 @@
 <div class="social-actions-container">
   <div *ngFor="let network of socialNetworks" class="action">
-    <button class="action-button">
+    <button class="action-button"  (click)="onAddAction(network)">
       add new {{ network.type }}
     </button>
     <div class="social-card" [ngClass]="network.platform">
