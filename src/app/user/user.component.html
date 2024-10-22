@@ -1,23 +1,23 @@
-<div class="user-container">
+<div class="user-container" [class.disabled]="isAccountClosed">
   <div class="tabs">
     <button 
       class="tab" 
       [ngClass]="activeTab === 'user' ? 'active' : ''" 
-      (click)="setActiveTab('user')">
+      (click)="setActiveTab('user')"
+      [disabled]="isAccountClosed">
       User
     </button>
     <button 
       class="tab" 
       [ngClass]="activeTab === 'notifications' ? 'active' : ''" 
-      (click)="setActiveTab('notifications')">
-      Notifications ({{ user!.notifications.length }})
+      (click)="setActiveTab('notifications')"
+      [disabled]="isAccountClosed">
+      Notifications ({{ isAccountClosed ? 'Disabled' : user!.notifications.length }})
     </button>
   </div>
 
-  <!-- Sección de información del usuario -->
-   <div *ngIf="activeTab === 'user'">
-
-    <div  class="user-info">
+  <div *ngIf="activeTab === 'user'">
+    <div class="user-info">
       <p><strong>Name:</strong> {{user!.name}}</p>
       <p><strong>Age:</strong> {{user!.age}}</p>
       <p><strong>Status:</strong> {{user!.status}}</p>
@@ -25,14 +25,15 @@
   
       <button 
         [ngClass]="user?.subscriptionType === 'free' ? 'subscription-button premium' : 'subscription-button'"
-        (click)="updateSubscription('free')">
+        (click)="updateSubscription('free')"
+        [disabled]="isAccountClosed">
         Free
       </button>
   
       <button 
         [ngClass]="user?.subscriptionType === 'premium' ? 'subscription-button premium' : 'subscription-button'"
-        (click)="updateSubscription('premium')">
-
+        (click)="updateSubscription('premium')"
+        [disabled]="isAccountClosed">
         Premium
       </button>
   
@@ -43,7 +44,7 @@
       <h3>Available Social Networks</h3>
       <div *ngFor="let network of availableSocialNetworks" class="network" [ngClass]="network.platform">
         {{ network.platform }}
-        <button class="add-button" (click)="addSubscription(network.id)">+</button>
+        <button class="add-button" (click)="addSubscription(network.id)" [disabled]="isAccountClosed">+</button>
       </div>
     </div>
   
@@ -51,17 +52,12 @@
       <h3>Subscriptions:</h3>
       <div *ngFor="let subscription of userSubscriptions" class="subscription" [ngClass]="subscription.platform">
         {{ subscription.platform }}
-        <button class="remove-button" (click)="removeSubscription(subscription.id)">x</button>
+        <button class="remove-button" (click)="removeSubscription(subscription.id)" [disabled]="isAccountClosed">x</button>
       </div>
     </div>
   
-    <button class="close-account-button">Close account</button>
-   </div>
-  
+    <button class="close-account-button" (click)="closeAccount()">Close account</button>
+  </div>
 
-  <!-- Componente de notificaciones -->
   <app-notification *ngIf="activeTab === 'notifications'" [notifications]="user!.notifications"></app-notification>
-
-
-  
 </div>

@@ -58,11 +58,11 @@
     border-radius: 5px;
   }
   
-  .network.facebook {
+  .subscription.facebook {
     background-color: #ffe6cc;
   }
   
-  .network.tiktok {
+  .subscription.whatsapp {
     background-color: #ccffcc;
   }
   
@@ -70,11 +70,31 @@
     background-color: #ffd6d6;
   }
   
-  .subscription.facebook {
+  .subscription.instagram {
     background-color: #cce5ff;
   }
   
   .subscription.tiktok {
+    background-color: #d6caff;
+  }
+
+  .network.facebook {
+    background-color: #ffe6cc;
+  }
+  
+  .network.whatsapp {
+    background-color: #ccffcc;
+  }
+  
+  .network.youtube {
+    background-color: #ffd6d6;
+  }
+  
+  .network.instagram {
+    background-color: #cce5ff;
+  }
+  
+  .network.tiktok {
     background-color: #d6caff;
   }
   
@@ -98,5 +118,18 @@
     border: none;
     cursor: pointer;
     width: 100%;
+  }
+  
+
+  .user-container.disabled {
+    background-color: black;
+    pointer-events: none; 
+  }
+  
+  .user-container.disabled .user-info,
+  .user-container.disabled .social-networks,
+  .user-container.disabled .subscriptions,
+  .user-container.disabled .tabs {
+    background-color: black;
   }
   
