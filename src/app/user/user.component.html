@@ -24,12 +24,15 @@
       <p><strong>Subscription type:</strong></p>
   
       <button 
-        [ngClass]="user?.subscriptionType === 'free' ? 'subscription-button premium' : 'subscription-button'">
+        [ngClass]="user?.subscriptionType === 'free' ? 'subscription-button premium' : 'subscription-button'"
+        (click)="updateSubscription('free')">
         Free
       </button>
   
       <button 
-        [ngClass]="user?.subscriptionType === 'premium' ? 'subscription-button premium' : 'subscription-button'">
+        [ngClass]="user?.subscriptionType === 'premium' ? 'subscription-button premium' : 'subscription-button'"
+        (click)="updateSubscription('premium')">
+
         Premium
       </button>
   
@@ -37,25 +40,18 @@
     </div>
 
     <div class="social-networks">
-      <h3>Social Networks</h3>
-      <div class="network facebook">
-        facebook <button class="add-button">+</button>
-      </div>
-      <div class="network tiktok">
-        tiktok <button class="add-button">+</button>
+      <h3>Available Social Networks</h3>
+      <div *ngFor="let network of availableSocialNetworks" class="network" [ngClass]="network.platform">
+        {{ network.platform }}
+        <button class="add-button" (click)="addSubscription(network.id)">+</button>
       </div>
     </div>
   
     <div class="subscriptions">
       <h3>Subscriptions:</h3>
-      <div class="subscription youtube">
-        youtube <button class="remove-button">x</button>
-      </div>
-      <div class="subscription facebook">
-        facebook <button class="remove-button">x</button>
-      </div>
-      <div class="subscription tiktok">
-        tiktok <button class="remove-button">x</button>
+      <div *ngFor="let subscription of userSubscriptions" class="subscription" [ngClass]="subscription.platform">
+        {{ subscription.platform }}
+        <button class="remove-button" (click)="removeSubscription(subscription.id)">x</button>
       </div>
     </div>
   

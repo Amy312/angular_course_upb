@@ -1,19 +1,14 @@
 <div class="container">
   <!-- Lista de Redes Sociales -->
   <h2>Social Networks</h2>
-  <ul class="social-network-list">
-    <li *ngFor="let network of socialNetworks">
-      <strong>{{ network.platform }}</strong> - {{ network.type }} ({{
-        network.platformType
-      }})
-    </li>
-  </ul>
+  <h2>Social Networks Overview</h2>
+  <app-social [socialNetworks]="socialNetworks"></app-social>
 
   <!-- Lista de Usuarios -->
   <h2>Users</h2>
   <div class="users">
     <div *ngFor="let user of users">
-      <app-user [user]="user"></app-user>
+      <app-user [user]="user" [socialNetworks]="socialNetworks"></app-user>
     </div>
   </div>
 </div>
