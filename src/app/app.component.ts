@@ -12,11 +12,19 @@ import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 interface IPerson2 {
   name: string,
   lastName: string,
   age?: number
+}
+
+interface IForm {
+  name: string
+  score: string
+  school: string
+  proffesor: string
+  university: string
 }
 
 interface IPerson{
@@ -140,9 +148,11 @@ export class AppComponent {
   var3 = 'hola'
 
   studentForm!: FormGroup
+  student2Form!: UntypedFormGroup
 
 
-  constructor(private router: Router, private formBuilder: FormBuilder  ){
+  constructor(private router: Router, private formBuilder: FormBuilder,
+    private untypedFormBuilder: UntypedFormBuilder){
     const { name, age } = this.person;
 
 
@@ -161,6 +171,23 @@ export class AppComponent {
       proffesor: [''],
       university: ['']
     })
+
+    this.student2Form = this.untypedFormBuilder.group({
+      name: ['', Validators.required],
+      score: [''],
+      school: [''],
+      proffesor: [''],
+      university: ['']
+    })
+    /* this.studentForm = new FormGroup({
+      name: new FormControl<string>('sdasdasdasd', [Validators.required]),
+      score: new FormControl<string>('sdfsdfsdf'),
+      school: new FormControl<string>(''),
+      proffesor: new FormControl<string>(''),
+      university: new FormControl<string>('')
+    }) */
+
+
     this.studentForm.valueChanges.subscribe((res) => {
       console.log('FORM GROUP OBSERVABLE: ', res)
     })
