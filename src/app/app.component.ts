@@ -12,7 +12,7 @@ import { PurePipe } from './pure.pipe';
 import { ImpurePipe } from './impure.pipe';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
-import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 interface IPerson2 {
   name: string,
   lastName: string,
@@ -139,7 +139,10 @@ export class AppComponent {
   var2 = null
   var3 = 'hola'
 
-  constructor(private router: Router){
+  studentForm!: FormGroup
+
+
+  constructor(private router: Router, private formBuilder: FormBuilder  ){
     const { name, age } = this.person;
 
 
@@ -150,6 +153,19 @@ export class AppComponent {
     this.scoreControl.valueChanges.subscribe((res) => {
       console.log('SCORE VALUE OBSERVABLE: ', res)
     })
+
+    this.studentForm = this.formBuilder.group({
+      name: ['', Validators.required],
+      score: [''],
+      school: [''],
+      proffesor: [''],
+      university: ['']
+    })
+    this.studentForm.valueChanges.subscribe((res) => {
+      console.log('FORM GROUP OBSERVABLE: ', res)
+    })
+
+    
     /*const {name, lastName} = this.person
     console.log('destructuration: ',name, lastName)*/
 
@@ -224,5 +240,9 @@ export class AppComponent {
   }
   onPrintScore(){
     console.log('SCORE: ', this.scoreControl.value)
+  }
+
+  onSendData() {
+    console.log('FORM GROUP: ', this.studentForm)
   }
 }
