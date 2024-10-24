@@ -272,4 +272,7 @@ export class AppComponent {
   onSendData() {
     console.log('FORM GROUP: ', this.studentForm)
   }
+  print(){
+    console.log('FORM NAME: ', this.studentForm.get('name'))
+  }
 }
