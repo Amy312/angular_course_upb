@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, OnInit, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from "../auth.service";
 @Component({
   selector: "calculator",
   standalone: true,
@@ -28,7 +29,9 @@ export class CalculatorComponent implements OnInit {
   @Output() mul = new EventEmitter()
   @Output() reset = new EventEmitter()
 
-  constructor(private _activatedRoute: ActivatedRoute) { }
+  constructor(private _activatedRoute: ActivatedRoute,
+    private _authService: AuthService
+  ) { }
   ngOnInit(): void {
       this._activatedRoute.queryParams.subscribe(params => {
         console.log('query params: ', params)
@@ -55,6 +58,10 @@ export class CalculatorComponent implements OnInit {
     this.box1Value = 0
     this.box2Value = 0
     this.reset.emit(null)
+  }
+
+  onLogin(){
+    this._authService.login()
   }
 }
 
