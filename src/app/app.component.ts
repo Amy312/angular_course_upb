@@ -14,6 +14,7 @@ import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from "@angular/forms";
 import { StudentService } from './services/student.service';
+import { AuthService } from './auth.service';
 interface IPerson2 {
   name: string,
   lastName: string,
@@ -153,14 +154,15 @@ export class AppComponent {
 
 
   constructor(
+    private _authService: AuthService,
     private _studentService: StudentService,
     private router: Router, private formBuilder: FormBuilder,
     private untypedFormBuilder: UntypedFormBuilder){
     const { name, age } = this.person;
-
+/*
     this._studentService.getStudents().subscribe((res) => {
       console.log('STUDENTS JSON: ', res)
-    });  
+    });  */
     this.youtube.subscribe((res) => {
       console.log("SUSCRIBER 1: ", res);
     });
@@ -193,9 +195,9 @@ export class AppComponent {
     }) */
 
 
-    this.studentForm.valueChanges.subscribe((res) => {
+    /*this.studentForm.valueChanges.subscribe((res) => {
       console.log('FORM GROUP OBSERVABLE: ', res)
-    })
+    })*/
 
     
     /*const {name, lastName} = this.person
@@ -279,5 +281,9 @@ export class AppComponent {
   }
   print(){
     console.log('FORM NAME: ', this.studentForm.get('name'))
+  }
+  onLogin(){
+    this._authService.login()
+    this.router.navigate(['student'])
   }
 }
