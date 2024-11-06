@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let city of cities" (click)="deleteCity(city.name)">
+      {{ city.name }}
+    </li>
+  </ul>
