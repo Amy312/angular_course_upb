@@ -22,7 +22,7 @@ export class FilterComponent {
       const filtered = cities.filter(city =>
         city.name.toLowerCase().includes(this.filter.toLowerCase())
       );
-      this.filteredCities.emit(filtered); // Emit filtered cities
+      this.filteredCities.emit(filtered); 
     });
   }
 }

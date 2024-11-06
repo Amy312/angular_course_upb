@@ -1,0 +1,32 @@
+input {
+    width: calc(100% - 110px);
+    padding: 10px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #f7c439;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #b38c00; 
+  }
+  
+  button:active {
+    background-color: #004085; 
+  }
+  
+  p {
+    color: rgb(234, 25, 25);
+    margin-top: 8px;
+  }
+  

@@ -17,21 +17,22 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   cities: City[] = []; 
+  errorMessage: string = ''; 
 
   constructor(private citiesService: CitiesService) {}
 
   ngOnInit(): void {
-    this.loadCities();  // Load cities from localStorage on init
+    this.loadCities();  
   }
 
   loadCities(): void {
     const storedCities = localStorage.getItem('cities');
     if (storedCities) {
-      this.cities = JSON.parse(storedCities);  // Load from localStorage if available
+      this.cities = JSON.parse(storedCities);  
     } else {
       this.citiesService.getCities().subscribe((data: City[]) => {
         this.cities = data;
-        this.saveToLocalStorage();  // Initial save to localStorage
+        this.saveToLocalStorage();  
       });
     }
   }
@@ -42,20 +43,21 @@ export class AppComponent implements OnInit {
 
   addNewCity(name: string): void {
     if (this.cities.some(city => city.name.toLowerCase() === name.toLowerCase())) {
-      console.error(`City "${name}" already exists in the list.`);
+      this.errorMessage =`City "${name}" already exists in the list.`;
       return;
     }
 
     const newCity: City = { id: Date.now(), name };
-    this.cities.push(newCity);  // Add the new city to the array
-    this.saveToLocalStorage();  // Save updated list to localStorage
+    this.cities.push(newCity);  
+    this.saveToLocalStorage();
+    this.errorMessage = ''; 
     console.log(`City "${name}" added to the list`);
   }
 
 
   removeCity(name: string): void {
-    this.cities = this.cities.filter(city => city.name !== name);  // Remove city by name
-    this.saveToLocalStorage();  // Save updated list to localStorage
+    this.cities = this.cities.filter(city => city.name !== name); 
+    this.saveToLocalStorage(); 
     console.log(`City ${name} removed from the list`);
   }
 

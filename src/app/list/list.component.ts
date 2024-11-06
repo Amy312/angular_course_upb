@@ -27,6 +27,6 @@ export class ListComponent implements OnInit {
 
   onDeleteCity(name: string): void {
     console.log(`Delete city: ${name}`);
-    this.deleteCity.emit(name);  // Emit city name to parent component
+    this.deleteCity.emit(name); 
   }
 }

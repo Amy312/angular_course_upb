@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CitiesService } from '../cities.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddComponent {
   newCity: string = '';
-  errorMessage: string = '';
+  @Input() errorMessage: string = ''; 
 
   @Output() addCity = new EventEmitter<string>();
 
@@ -24,6 +24,6 @@ export class AddComponent {
 
     this.errorMessage = '';
     this.addCity.emit(this.newCity.trim());
-    this.newCity = '';  // Clear input after emitting the event
+    this.newCity = '';  
   }
 }
