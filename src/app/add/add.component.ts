@@ -1,27 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CitiesService } from '../cities.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-add',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add.component.html',
   styleUrl: './add.component.css'
 })
 export class AddComponent {
-  newCity = '';
-  errorMessage = '';
+  newCity: string = '';
+  errorMessage: string = '';
 
-  constructor(private citiesService: CitiesService) {}
+  @Output() addCity = new EventEmitter<string>();
 
-  addCity(): void {
-    this.errorMessage = '';
-    const error = this.citiesService.addCity(this.newCity);
-    if (error) {
-      this.errorMessage = error;
-    } else {
-      this.newCity = '';
+  onAddCity(): void {
+    if (!this.newCity.trim()) {
+      this.errorMessage = 'City name cannot be empty.';
+      return;
     }
+
+    this.errorMessage = '';
+    this.addCity.emit(this.newCity.trim());
+    this.newCity = '';  // Clear input after emitting the event
   }
 }

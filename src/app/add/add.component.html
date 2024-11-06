@@ -1,3 +1,3 @@
-<input (ngModel)="newCity" placeholder="Add new city" />
-    <button (click)="addCity()">Add City</button>
+<input [(ngModel)]="newCity" placeholder="Add new city" />
+    <button (click)="onAddCity()">Add City</button>
     <p *ngIf="errorMessage">{{ errorMessage }}</p>

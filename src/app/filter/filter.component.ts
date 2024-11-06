@@ -1,28 +1,28 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CitiesService } from '../cities.service';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.css'
 })
 export class FilterComponent {
   filter = '';
-  cities: { id: number; name: string }[] = [];
-  
+
   @Output() filteredCities = new EventEmitter<{ id: number; name: string }[]>();
 
   constructor(private citiesService: CitiesService) {}
 
   applyFilter(): void {
     this.citiesService.getCities().subscribe((cities) => {
-      this.cities = cities.filter(city =>
+      const filtered = cities.filter(city =>
         city.name.toLowerCase().includes(this.filter.toLowerCase())
       );
-      this.filteredCities.emit(this.cities);
+      this.filteredCities.emit(filtered); // Emit filtered cities
     });
   }
 }

@@ -1,0 +1,29 @@
+ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    background-color: #f2f2f2;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  li:hover {
+    background-color: #dcdcdc; /* Cambio de color al pasar el mouse */
+  }
+  
+  li:active {
+    background-color: #b0b0b0; /* Color al hacer clic */
+  }
+  
+  p {
+    color: #888;
+    font-style: italic;
+    margin-top: 10px;
+  }
+  

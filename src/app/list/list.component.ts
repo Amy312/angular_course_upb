@@ -1,24 +1,32 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CitiesService } from '../cities.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { City } from '../cities.service';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css'
+  imports: [CommonModule, FormsModule],
+  template: `
+    <ul *ngIf="cities && cities.length > 0">
+      <li *ngFor="let city of cities" (click)="onDeleteCity(city.name)">
+        {{ city.name }}
+      </li>
+    </ul>
+    <p *ngIf="cities && cities.length === 0">No cities available.</p>
+  `,
+  styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  @Input() cities: { id: number; name: string }[] = [];
-
-  constructor(private citiesService: CitiesService) {}
+  @Input() cities:City[] = [];
+  @Output() deleteCity = new EventEmitter<string>(); 
 
   ngOnInit(): void {
-    this.citiesService.getCities().subscribe((cities) => (this.cities = cities));
+    console.log(this.cities);
   }
 
-  deleteCity(name: string): void {
-    this.citiesService.deleteCity(name);
+  onDeleteCity(name: string): void {
+    console.log(`Delete city: ${name}`);
+    this.deleteCity.emit(name);  // Emit city name to parent component
   }
 }

@@ -1,6 +1,4 @@
 <h1>Cities List</h1>
-<app-add></app-add>
-<app-filter (filteredCities)="cityList.cities = $event"><app-filter/>
-
-<app-list #cityList>
-</app-list>
+<app-add (addCity)="addNewCity($event)"></app-add> 
+<app-filter (filteredCities)="updateFilteredCities($event)"></app-filter>
+<app-list [cities]="cities" (deleteCity)="removeCity($event)"></app-list>
